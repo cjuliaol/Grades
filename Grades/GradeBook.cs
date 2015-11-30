@@ -17,11 +17,11 @@ namespace Grades
             } 
             set
             {
-                if ( String.IsNullOrEmpty(value) )
+                if ( !String.IsNullOrEmpty(value) )
                 {
-                    if (_name != value)
+                    if ( _name != value)
                     {
-                        // Name changed
+                        NameChanged(_name, value);
                     }
 
                     _name = value;
@@ -30,10 +30,14 @@ namespace Grades
             }
         }
 
+        public NameChangedDelegate NameChanged;
+
+
         private string _name;
 
         public GradeBook()
         {
+            _name = "Empty";
             grades = new List<float>();
         }
 

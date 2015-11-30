@@ -16,7 +16,14 @@ namespace Grades
             SpeechSynthesizer synt = new SpeechSynthesizer();
             synt.Speak("Hello, this is a C# course");
 
+
+
             GradeBook book = new GradeBook();
+
+            book.NameChanged = new NameChangedDelegate(OnNameChanged);
+            book.Name = "Xavier";
+            book.Name = "Joseph";
+
             book.AddGrade(90);
             book.AddGrade(85.5f);
             book.AddGrade(75);
@@ -28,6 +35,11 @@ namespace Grades
             Console.WriteLine("Lowest = " + stats.LowestGrade);
 
 
+        }
+
+        static void OnNameChanged(string existingName, string newName)
+        {
+            Console.WriteLine($" Grades is changing the name from {existingName} to {newName}");
         }
     }
 }
