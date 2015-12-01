@@ -30,11 +30,18 @@ namespace Grades
 
             GradeStatistics stats = book.computeStatistics();
 
-            Console.WriteLine("Average = " + stats.AverageGrade);
-            Console.WriteLine("Highest = " + stats.HighestGrade);
-            Console.WriteLine("Lowest = " + stats.LowestGrade);
+            WriteResult("Average", Convert.ToString(stats.AverageGrade) );
+            WriteResult("Highest", Convert.ToString( stats.HighestGrade));
+            WriteResult("Lowest", Convert.ToString( stats.LowestGrade));
+            WriteResult("Letter Grade", stats.LetterGrade);
+            WriteResult("Description", stats.Description);
+        
 
+        }
 
+        static void WriteResult (string description, string result)
+        {
+            Console.WriteLine($"{description}: {result} ", description,result);
         }
 
         static void OnNameChanged(string existingName, string newName)
